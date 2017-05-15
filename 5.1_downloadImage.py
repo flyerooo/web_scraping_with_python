@@ -40,6 +40,7 @@ def getDownloadList():
         html = urlopen("http://www.pythonscraping.com")
         bsObj = BeautifulSoup(html, "lxml")
         downloadList = bsObj.findAll(src=True)
+        print(downloadList)
     except HTTPError as e:
         print(e)
     return downloadList
@@ -48,6 +49,8 @@ downloadList = getDownloadList()
 for download in downloadList:
     fileUrl = getAbsoluteURL(baseUrl, download["src"])
     if fileUrl is not None:
+        # windows下文件名不能含？
+        fileUrl2 = fileUrl.replace("?","")
         print(fileUrl)
 
-        urlretrieve(fileUrl, getDownloadPath(baseUrl, fileUrl, downloadDirectory))
+        urlretrieve(fileUrl, getDownloadPath(baseUrl, fileUrl2, downloadDirectory))
