@@ -30,8 +30,9 @@ def getDownloadPath(baseUrl, absoluteUrl, downloadDirectory):
     path = path.replace(baseUrl, "")
     path = downloadDirectory + path
     directory = os.path.dirname(path)
-
+    directory = directory.replace(":","")
     if not os.path.exists(directory):
+
         os.makedirs(directory)
     return path
 
