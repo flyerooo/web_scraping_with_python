@@ -3,7 +3,7 @@
 
 import requests
 # 登录后获取cookie，然后将cookie用于请求中
-params = {'first': 'Ryan', 'lastname': 'Mitchell'}
+params = {'firstname': 'Ryan', 'lastname': 'Mitchell'}
 r = requests.post("http://pythonscraping.com/pages/files/processing.php", data=params)
 print("Cookie is set to: ")
 print(r.cookies.get_dict())
